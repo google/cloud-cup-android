@@ -39,7 +39,7 @@ public class TappingGameActivity extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tapping_game_activity);
         Firebase.setAndroidContext(this);
-        firebaseRef = new Firebase("https://cloud-olympics.firebaseio.com");
+        firebaseRef = new Firebase(Consts.firebaseUrl);
 
         // Instantiate the gesture detector with the
         // application context and an implementation of
