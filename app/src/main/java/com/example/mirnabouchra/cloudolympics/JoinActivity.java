@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.view.View;
+import android.widget.TextView;
 
 import com.firebase.client.Firebase;
 
@@ -19,34 +20,24 @@ import com.firebase.client.Firebase;
 public class JoinActivity extends Activity {
 
     private static final String LOG_TAG = JoinActivity.class.getSimpleName();
-    private EditText code;
     private Firebase firebaseRef;
+    private String codeValue;
+    private String playerId;
+    private String playerName;
+    private TextView roomText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         setContentView(R.layout.join_activity);
-
-        code = (EditText) findViewById(R.id.code);
-        code.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                Log.d(LOG_TAG, editable.toString());
-            }
-        });
-
         firebaseRef = new Firebase("https://cloud-olympics.firebaseio.com/");
+        playerName = getIntent().getStringExtra("playerName");
+        codeValue = getIntent().getStringExtra("code");
+        playerId = getIntent().getStringExtra("playerId");
+
+        roomText = (TextView) findViewById(R.id.room_text);
+        roomText.setText("You joined room " + codeValue);
     }
 
 
@@ -74,9 +65,8 @@ public class JoinActivity extends Activity {
 
     public void startGame(View view) {
         Intent intent = new Intent(this, TappingGameActivity.class);
-        intent.putExtra("code", code.getText().toString());
-        firebaseRef.child("message").setValue("Connect to room " + code.getText().toString());
+        intent.putExtra("playerId", playerId);
+        intent.putExtra("code", codeValue);
         startActivity(intent);
     }
-
 }

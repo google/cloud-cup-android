@@ -3,30 +3,21 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp">
-
-    <EditText
-        android:id="@+id/code"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:hint="@string/enter_code"
-        android:inputType="number"
-        android:background="@drawable/edit_text"
-        android:layout_gravity="center_horizontal"
-        style="@style/edit_text"
-        android:imeActionLabel="@string/join"
-        android:imeOptions="actionNone"/>
-
-    <Button
-        android:id="@+id/join_button"
+    <TextView android:id="@+id/room_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        style="@style/edit_text"/>
+    <Button
+        android:background="@drawable/blue_button"
+        android:id="@+id/start_button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
-        android:text="Join"
-        android:layout_alignTop="@+id/code"
-        android:layout_alignBottom="@+id/code"
-        android:layout_alignRight="@+id/code"
+        android:text="Start"
+        style="@style/button_text"
         android:onClick="startGame"/>
 </RelativeLayout>

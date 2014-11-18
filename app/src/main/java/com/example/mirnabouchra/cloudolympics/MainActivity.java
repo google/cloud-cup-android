@@ -7,16 +7,25 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+
 import com.firebase.client.Firebase;
 
 
 public class MainActivity extends Activity {
+    private EditText username;
+    private EditText code;
+    private Firebase firebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_main);
+
+        firebase = new Firebase("https://cloud-olympics.firebaseio.com/");
+        username = (EditText) findViewById(R.id.username);
+        code = (EditText) findViewById(R.id.code);
     }
 
 
@@ -42,8 +51,17 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void play(View view) {
-        Intent joinIntent = new Intent(this, JoinActivity.class);
-        startActivity(joinIntent);
+    public void join(View view) {
+        Intent intent = new Intent(this, JoinActivity.class);
+        String codeValue = code.getText().toString();
+        String usernameValue = username.getText().toString();
+        intent.putExtra("playerName", usernameValue);
+        intent.putExtra("code", codeValue);
+        Firebase ref = firebase.child("room/" + codeValue + "/players");
+        Firebase pushRef = ref.push();
+        pushRef.setValue(usernameValue);
+        String key = pushRef.getKey();
+        intent.putExtra("playerId", key);
+        startActivity(intent);
     }
 }
