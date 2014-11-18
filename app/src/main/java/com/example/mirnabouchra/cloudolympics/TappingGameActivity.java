@@ -25,108 +25,65 @@ import com.firebase.client.*;
 /**
  * Created by mirnabouchra on 11/17/14.
  */
-public class TappingGameActivity extends Activity implements
-        GestureDetector.OnGestureListener,
-        GestureDetector.OnDoubleTapListener {
+public class TappingGameActivity extends Activity {
 
     private static final String LOG_TAG = TappingGameActivity.class.getSimpleName();;
     private GestureDetector mDetector;
     private Firebase firebaseRef;
+
+    private int tapCount;
+
+    class TapListener extends GestureDetector.SimpleOnGestureListener {
+        private static final String DEBUG_TAG = "Gestures";
+
+        @Override
+        public boolean onDown(MotionEvent event) {
+            tapCount++;
+            Log.d(DEBUG_TAG,"tap count: " + tapCount);
+
+            firebaseRef.setValue(tapCount);
+            return true;
+        }
+    }
 
     // Called when the activity is first created.
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tapping_game_activity);
-        Firebase.setAndroidContext(this);
-        firebaseRef = new Firebase(Consts.firebaseUrl);
 
-        // Instantiate the gesture detector with the
-        // application context and an implementation of
-        // GestureDetector.OnGestureListener
-        mDetector = new GestureDetector(this,this);
-        // Set the gesture detector as the double tap
-        // listener.
-        mDetector.setOnDoubleTapListener(this);
+        // init tap count to 0
+        tapCount = 0;
 
+        // get the room code
         String code = getIntent().getStringExtra("code");
-        Log.d(LOG_TAG, "Code is " + code);
+        Log.d(LOG_TAG, "Room code is " + code);
 
-        final TextView received = (TextView) findViewById(R.id.received);
-        firebaseRef.child("message").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                System.out.println(snapshot.getValue());
-                received.setText(snapshot.getValue().toString());
-            }
+        // get the player ID
+        String playerID = getIntent().getStringExtra("player");
+        Log.d(LOG_TAG, "Player ID is " + playerID);
 
-            @Override
-            public void onCancelled(FirebaseError error) {
-            }
+        // TODO for testing purposes only
+        playerID = "player1";
 
-        });
+        Firebase.setAndroidContext(this);
+        firebaseRef = new Firebase(Consts.FIREBASE_URL);
+        firebaseRef = firebaseRef.child("room");
+        firebaseRef = firebaseRef.child(code);
+        firebaseRef = firebaseRef.child("game");
+        firebaseRef = firebaseRef.child("data");
+        firebaseRef = firebaseRef.child("players");
+        firebaseRef = firebaseRef.child(playerID);
+
+        mDetector = new GestureDetector(this, new TapListener());
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event){
         this.mDetector.onTouchEvent(event);
-        // Be sure to call the superclass implementation
         return super.onTouchEvent(event);
     }
 
-    @Override
-    public boolean onDown(MotionEvent event) {
-        Log.d(LOG_TAG,"onDown: " + event.toString());
-        return true;
-    }
-
-    @Override
-    public boolean onFling(MotionEvent event1, MotionEvent event2,
-                           float velocityX, float velocityY) {
-        Log.d(LOG_TAG, "onFling: " + event1.toString()+event2.toString());
-        return true;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent event) {
-        Log.d(LOG_TAG, "onLongPress: " + event.toString());
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX,
-                            float distanceY) {
-        Log.d(LOG_TAG, "onScroll: " + e1.toString()+e2.toString());
-        return true;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent event) {
-        Log.d(LOG_TAG, "onShowPress: " + event.toString());
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent event) {
-        Log.d(LOG_TAG, "onSingleTapUp: " + event.toString());
-        return true;
-    }
-
-    @Override
-    public boolean onDoubleTap(MotionEvent event) {
-        Log.d(LOG_TAG, "onDoubleTap: " + event.toString());
-        return true;
-    }
-
-    @Override
-    public boolean onDoubleTapEvent(MotionEvent event) {
-        Log.d(LOG_TAG, "onDoubleTapEvent: " + event.toString());
-        return true;
-    }
-
-    @Override
-    public boolean onSingleTapConfirmed(MotionEvent event) {
-        Log.d(LOG_TAG, "onSingleTapConfirmed: " + event.toString());
-        return true;
-    }
 }
 
 
