@@ -8,5 +8,6 @@
     <string name="enter_code">Enter code</string>
     <string name="join">Join</string>
     <string name="enter_username">Enter username</string>
+    <string name="tapGameMessage">Tap here!</string>
 
 </resources>

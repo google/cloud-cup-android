@@ -4,5 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/tapGameMessage"
+        android:id="@+id/tapContent"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:singleLine="true" />
 </LinearLayout>
