@@ -29,11 +29,8 @@ public class GameActivity extends Activity {
         Log.d(LOG_TAG, "Room code is " + code);
 
         // get the player ID
-        String playerID = getIntent().getStringExtra("player");
+        String playerID = getIntent().getStringExtra("playerId");
         Log.d(LOG_TAG, "Player ID is " + playerID);
-
-        // TODO for testing purposes only
-        playerID = "player1";
 
         Firebase.setAndroidContext(this);
         firebaseRef = new Firebase(Consts.FIREBASE_URL);
