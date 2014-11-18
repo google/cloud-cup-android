@@ -25,6 +25,7 @@ public class JoinActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
         setContentView(R.layout.join_activity);
 
         code = (EditText) findViewById(R.id.code);

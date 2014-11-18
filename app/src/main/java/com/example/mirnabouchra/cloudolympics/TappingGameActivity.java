@@ -8,6 +8,8 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.GestureDetector;
 import android.util.Log;
+import android.widget.TextView;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.android.volley.toolbox.StringRequest;
@@ -16,6 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.Response.Listener;
 import com.android.volley.Response.ErrorListener;
+import com.firebase.client.Firebase;
+import com.firebase.client.*;
 
 
 /**
@@ -27,33 +31,16 @@ public class TappingGameActivity extends Activity implements
 
     private static final String LOG_TAG = TappingGameActivity.class.getSimpleName();;
     private GestureDetector mDetector;
-    // Instantiate the RequestQueue.
-    RequestQueue queue;
-    String url ="http://cloud-olympics-server.appspot.com/api/game-controller/register";
-
-    // Request a string response from the provided URL.
-    StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-            new Response.Listener() {
-
-                @Override
-                public void onResponse(Object response) {
-                    // Display the first 500 characters of the response string.
-                    Log.d(LOG_TAG, response.toString());
-                }
-            }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            error.printStackTrace();
-            Log.d(LOG_TAG, "That didn't work!");
-        }
-    });
+    private Firebase firebaseRef;
 
     // Called when the activity is first created.
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tapping_game_activity);
-        queue = Volley.newRequestQueue(this);
+        Firebase.setAndroidContext(this);
+        firebaseRef = new Firebase("https://cloud-olympics.firebaseio.com");
+
         // Instantiate the gesture detector with the
         // application context and an implementation of
         // GestureDetector.OnGestureListener
@@ -65,7 +52,19 @@ public class TappingGameActivity extends Activity implements
         String code = getIntent().getStringExtra("code");
         Log.d(LOG_TAG, "Code is " + code);
 
-        queue.add(stringRequest);
+        final TextView received = (TextView) findViewById(R.id.received);
+        firebaseRef.child("message").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                System.out.println(snapshot.getValue());
+                received.setText(snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(FirebaseError error) {
+            }
+
+        });
     }
 
     @Override
