@@ -25,21 +25,18 @@ import com.firebase.client.*;
 /**
  * Created by mirnabouchra on 11/17/14.
  */
-public class TappingGameActivity extends Activity {
+public class TappingGameActivity extends GameActivity {
 
-    private static final String LOG_TAG = TappingGameActivity.class.getSimpleName();;
+    private static final String LOG_TAG = TappingGameActivity.class.getSimpleName();
     private GestureDetector mDetector;
-    private Firebase firebaseRef;
 
     private int tapCount;
 
     class TapListener extends GestureDetector.SimpleOnGestureListener {
-        private static final String DEBUG_TAG = "Gestures";
-
         @Override
         public boolean onDown(MotionEvent event) {
             tapCount++;
-            Log.d(DEBUG_TAG,"tap count: " + tapCount);
+            Log.d(LOG_TAG, "tap count: " + tapCount);
 
             firebaseRef.setValue(tapCount);
             return true;
@@ -54,26 +51,6 @@ public class TappingGameActivity extends Activity {
 
         // init tap count to 0
         tapCount = 0;
-
-        // get the room code
-        String code = getIntent().getStringExtra("code");
-        Log.d(LOG_TAG, "Room code is " + code);
-
-        // get the player ID
-        String playerID = getIntent().getStringExtra("player");
-        Log.d(LOG_TAG, "Player ID is " + playerID);
-
-        // TODO for testing purposes only
-        playerID = "player1";
-
-        Firebase.setAndroidContext(this);
-        firebaseRef = new Firebase(Consts.FIREBASE_URL);
-        firebaseRef = firebaseRef.child("room");
-        firebaseRef = firebaseRef.child(code);
-        firebaseRef = firebaseRef.child("game");
-        firebaseRef = firebaseRef.child("data");
-        firebaseRef = firebaseRef.child("players");
-        firebaseRef = firebaseRef.child(playerID);
 
         mDetector = new GestureDetector(this, new TapListener());
     }
