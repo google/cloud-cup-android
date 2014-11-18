@@ -17,6 +17,9 @@ import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallback
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
 import com.google.android.gms.plus.Plus;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class MainActivity extends Activity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -102,7 +105,9 @@ public class MainActivity extends Activity implements
         intent.putExtra("code", codeValue);
         Firebase ref = firebase.child("room/" + codeValue + "/players");
         Firebase pushRef = ref.push();
-        pushRef.setValue(usernameValue);
+        Map<String, String> user = new HashMap<String, String>();
+        user.put("name", usernameValue);
+        pushRef.setValue(user);
         String key = pushRef.getKey();
         intent.putExtra("playerId", key);
         startActivity(intent);
