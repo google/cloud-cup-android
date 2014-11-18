@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp" tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_height="300dp"
+        android:layout_width="fill_parent"
+        android:src="@drawable/olympic_transparent" />
+
+    <Button
+        android:background="@drawable/blue_button"
+        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_gravity="center"
+        android:text="@string/play"
+        style="@style/button_text"
+        android:onClick="play" />
+</LinearLayout>
