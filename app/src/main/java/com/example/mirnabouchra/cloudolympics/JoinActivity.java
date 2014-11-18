@@ -74,7 +74,7 @@ public class JoinActivity extends Activity {
     public void startGame(View view) {
         Intent intent = new Intent(this, TappingGameActivity.class);
         intent.putExtra("code", code.getText().toString());
-        firebaseRef.child("message").setValue("Do you have data? You'll love Firebase.");
+        firebaseRef.child("message").setValue("Connect to room " + code.getText().toString());
         startActivity(intent);
     }
 
