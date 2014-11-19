@@ -24,7 +24,7 @@ public class GameActivity extends Activity {
     protected String code;
     protected String playerID;
     protected Intent currentIntent;
-    protected String gameType = "run";
+    protected String gameType = "";
     protected String gameNumber;
 
     // Called when the activity is first created.
@@ -41,7 +41,9 @@ public class GameActivity extends Activity {
         Log.d(LOG_TAG, "Player ID is " + playerID);
 
         gameNumber = getIntent().getStringExtra("number") != null ?
-                getIntent().getStringExtra("number") : "";
+                getIntent().getStringExtra("number") : "-1";
+
+        currentIntent = getIntent();
 
         Firebase.setAndroidContext(this);
         firebaseRef = new Firebase(Consts.FIREBASE_URL);
@@ -56,7 +58,14 @@ public class GameActivity extends Activity {
         gameRef.child("type").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                gameType = (String) dataSnapshot.getValue();
+                if (dataSnapshot.getValue() != null && !dataSnapshot.getValue().toString().isEmpty()
+                        /* && !gameType.equals(dataSnapshot.getValue().toString()) */) {
+                    gameType = (String) dataSnapshot.getValue();
+                    //if (currentIntent == null) {
+                        startGame();
+                    //}
+                    }
+
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
@@ -66,7 +75,8 @@ public class GameActivity extends Activity {
         gameRef.child("number").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (!gameNumber.equals(snapshot.getValue().toString())) {
+             if (snapshot.getValue() != null && !snapshot.getValue().toString().equals("-1") &&
+                     !gameNumber.equals(snapshot.getValue().toString())) {
                     gameNumber = snapshot.getValue().toString();
                     startGame();
                 }
@@ -77,8 +87,12 @@ public class GameActivity extends Activity {
     }
 
     private void startGame() {
-        if (gameType.equals("run")) {
-            Log.d(LOG_TAG, "Run!");
+        if (gameType == null || gameType.isEmpty()) return;
+        if (gameNumber.equals(-1)) return;
+        if (currentIntent != null && currentIntent.getStringExtra("number") != null &&
+                currentIntent.getStringExtra("number").equals(gameNumber)) return;
+        if (gameType.equals("tap")) {
+            Log.d(LOG_TAG, "tap!");
             Intent intent = new Intent(this, TappingGameActivity.class);
             intent.putExtra("playerId", playerID);
             intent.putExtra("code", code);
