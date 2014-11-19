@@ -9,5 +9,6 @@
     <string name="join">Join</string>
     <string name="enter_username">Enter username</string>
     <string name="tapGameMessage">Tap here!</string>
+    <string name="shakeGameMessage">Shake!</string>
 
 </resources>

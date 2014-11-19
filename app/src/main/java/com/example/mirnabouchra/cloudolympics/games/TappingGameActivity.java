@@ -1,25 +1,12 @@
-package com.example.mirnabouchra.cloudolympics;
+package com.example.mirnabouchra.cloudolympics.games;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import android.view.GestureDetector;
 import android.util.Log;
-import android.widget.TextView;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.Response.Listener;
-import com.android.volley.Response.ErrorListener;
-import com.firebase.client.Firebase;
-import com.firebase.client.*;
+import com.example.mirnabouchra.cloudolympics.GameActivity;
+import com.example.mirnabouchra.cloudolympics.R;
 
 
 /**

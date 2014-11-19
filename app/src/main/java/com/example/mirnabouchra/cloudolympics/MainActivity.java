@@ -88,7 +88,7 @@ public class MainActivity extends Activity implements
     protected void onStart() {
         Log.d(LOG_TAG, "onStart");
         super.onStart();
-        mGoogleApiClient.connect();
+        //mGoogleApiClient.connect();
     }
 
     protected void onStop() {

@@ -3,15 +3,13 @@ package com.example.mirnabouchra.cloudolympics;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.mirnabouchra.cloudolympics.games.ShakingGameActivity;
+import com.example.mirnabouchra.cloudolympics.games.TappingGameActivity;
 import com.firebase.client.Firebase;
 
 /**
@@ -64,7 +62,7 @@ public class JoinActivity extends Activity {
     }
 
     public void startGame(View view) {
-        Intent intent = new Intent(this, TappingGameActivity.class);
+        Intent intent = new Intent(this, ShakingGameActivity.class);
         intent.putExtra("playerId", playerId);
         intent.putExtra("code", codeValue);
         startActivity(intent);
