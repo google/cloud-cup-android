@@ -19,7 +19,7 @@ import com.firebase.client.ValueEventListener;
 /**
  * Created by steren
  */
-public class GameActivity extends ActionBarActivity {
+public class GameActivity extends Activity {
     private static final String LOG_TAG = GameActivity.class.getSimpleName();
     protected Firebase firebaseRef;
     protected String code;
