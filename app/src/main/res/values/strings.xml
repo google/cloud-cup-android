@@ -8,7 +8,11 @@
     <string name="enter_code">Enter code</string>
     <string name="join">Join</string>
     <string name="enter_username">Enter username</string>
+
+    <string name="tapGameTitle">Tap</string>
     <string name="tapGameMessage">Tap here!</string>
-    <string name="shakeGameMessage">Shake!</string>
+
+    <string name="shakeGameTitle">Shake</string>
+    <string name="shakeGameMessage">Shake your phone!</string>
 
 </resources>
