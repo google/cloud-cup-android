@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.firebase.client.Firebase;
 import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
 import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
 import com.google.android.gms.plus.Plus;
+import com.google.android.gms.plus.model.people.Person;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,18 +25,11 @@ import java.util.Map;
 
 public class MainActivity extends Activity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
     private EditText username;
     private EditText code;
     private Firebase firebase;
-    /* Track whether the sign-in button has been clicked so that we know to resolve
-     * all issues preventing sign-in without waiting.
-     */
-    private boolean mSignInClicked;
-
-    /* Store the connection result from onConnectionFailed callbacks so that we can
-     * resolve them when the user clicks sign-in.
-     */
-    private ConnectionResult mConnectionResult;
 
     /* Request code used to invoke sign in user interactions. */
     private static final int RC_SIGN_IN = 0;
@@ -63,15 +58,6 @@ public class MainActivity extends Activity implements
         firebase = new Firebase("https://cloud-olympics.firebaseio.com/");
         username = (EditText) findViewById(R.id.username);
         code = (EditText) findViewById(R.id.code);
-        findViewById(R.id.sign_in_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!mGoogleApiClient.isConnecting()) {
-                    mSignInClicked = true;
-                    resolveSignInError();
-                }
-            }
-        });
     }
 
 
@@ -97,6 +83,19 @@ public class MainActivity extends Activity implements
         return super.onOptionsItemSelected(item);
     }
 
+    protected void onStart() {
+        Log.d(LOG_TAG, "onStart");
+        super.onStart();
+        mGoogleApiClient.connect();
+    }
+
+    protected void onStop() {
+        super.onStop();
+        if (mGoogleApiClient.isConnected()) {
+            mGoogleApiClient.disconnect();
+        }
+    }
+
     public void join(View view) {
         Intent intent = new Intent(this, JoinActivity.class);
         String codeValue = code.getText().toString();
@@ -113,25 +112,11 @@ public class MainActivity extends Activity implements
         startActivity(intent);
     }
 
-    protected void onStart() {
-        super.onStart();
-        mGoogleApiClient.connect();
-    }
-
-    protected void onStop() {
-        super.onStop();
-
-        if (mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.disconnect();
-        }
-    }
-
-    /* A helper method to resolve the current ConnectionResult error. */
-    private void resolveSignInError() {
-        if (mConnectionResult.hasResolution()) {
+    public void onConnectionFailed(ConnectionResult result) {
+        if (!mIntentInProgress && result.hasResolution()) {
             try {
                 mIntentInProgress = true;
-                startIntentSenderForResult(mConnectionResult.getResolution().getIntentSender(),
+                startIntentSenderForResult(result.getResolution().getIntentSender(),
                         RC_SIGN_IN, null, 0, 0, 0);
             } catch (SendIntentException e) {
                 // The intent was canceled before it was sent.  Return to the default
@@ -142,26 +127,8 @@ public class MainActivity extends Activity implements
         }
     }
 
-    public void onConnectionFailed(ConnectionResult result) {
-        if (!mIntentInProgress) {
-            // Store the ConnectionResult so that we can use it later when the user clicks
-            // 'sign-in'.
-            mConnectionResult = result;
-
-            if (mSignInClicked) {
-                // The user has already clicked 'sign-in' so we attempt to resolve all
-                // errors until the user is signed in, or they cancel.
-                resolveSignInError();
-            }
-        }
-    }
-
     protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
         if (requestCode == RC_SIGN_IN) {
-            if (responseCode != RESULT_OK) {
-                mSignInClicked = false;
-            }
-
             mIntentInProgress = false;
 
             if (!mGoogleApiClient.isConnecting()) {
@@ -170,10 +137,12 @@ public class MainActivity extends Activity implements
         }
     }
 
-    @Override
     public void onConnected(Bundle connectionHint) {
-        mSignInClicked = false;
-        Toast.makeText(this, "User is connected!", Toast.LENGTH_LONG).show();
+        // Get user info
+        Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+        Toast.makeText(this, currentPerson.getDisplayName() + " is connected!", Toast.LENGTH_LONG).show();
+        Log.d(LOG_TAG, currentPerson.getDisplayName());
+        Log.d(LOG_TAG, currentPerson.getImage().getUrl());
     }
 
     public void onConnectionSuspended(int cause) {
