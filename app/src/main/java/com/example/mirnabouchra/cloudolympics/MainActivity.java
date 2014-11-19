@@ -99,7 +99,7 @@ public class MainActivity extends Activity implements
     }
 
     public void join(View view) {
-        Intent intent = new Intent(this, JoinActivity.class);
+        Intent intent = new Intent(this, BlankGameActivity.class);
 
         String codeValue = code.getText().toString();
 
@@ -129,6 +129,7 @@ public class MainActivity extends Activity implements
         intent.putExtra("playerId", key);
         intent.putExtra("playerName", playerName);
         intent.putExtra("code", codeValue);
+
         // Start the intent
         startActivity(intent);
     }
