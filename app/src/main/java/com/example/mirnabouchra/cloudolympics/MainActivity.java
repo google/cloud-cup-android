@@ -22,6 +22,7 @@ import com.google.android.gms.plus.model.people.Person;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 
 public class MainActivity extends Activity implements
@@ -99,22 +100,35 @@ public class MainActivity extends Activity implements
 
     public void join(View view) {
         Intent intent = new Intent(this, JoinActivity.class);
-        // Get data of current signed-in user
-        Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-        intent.putExtra("playerName", currentPerson.getDisplayName());
-        // Add code to the intent
+
         String codeValue = code.getText().toString();
-        intent.putExtra("code", codeValue);
-        // Register data in Firebase
+
+        String playerName;
+        String imageUrl;
+        if(mGoogleApiClient.isConnected()) {
+            // Get data of current signed-in user
+            Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+            playerName = currentPerson.getDisplayName();
+            imageUrl = currentPerson.getImage().getUrl();
+        } else {
+            Random rand = new Random();
+            playerName = "Anonymous " + rand.nextInt(10);
+            imageUrl = "";
+        }
+
+        // Register player data in Firebase
         Firebase ref = firebase.child("room/" + codeValue + "/players");
         Firebase pushRef = ref.push();
         Map<String, String> user = new HashMap<String, String>();
-        user.put("name", currentPerson.getDisplayName());
-        user.put("imageUrl", currentPerson.getImage().getUrl());
+        user.put("name", playerName);
+        user.put("imageUrl", imageUrl);
         pushRef.setValue(user);
         String key = pushRef.getKey();
-        // Add player key to intent
+
+        // Add intent data
         intent.putExtra("playerId", key);
+        intent.putExtra("playerName", playerName);
+        intent.putExtra("code", codeValue);
         // Start the intent
         startActivity(intent);
     }
