@@ -11,9 +11,7 @@
         android:layout_marginTop="100dp"
         android:hint="@string/enter_username"
         android:inputType="textPersonName"
-        android:background="@drawable/edit_text"
-        android:layout_gravity="center_horizontal"
-        style="@style/edit_text"/>
+        android:layout_gravity="center_horizontal"/>
 
     <EditText
         android:id="@+id/code"
@@ -22,20 +20,16 @@
         android:layout_marginTop="180dp"
         android:hint="@string/enter_code"
         android:inputType="number"
-        android:background="@drawable/edit_text"
         android:layout_gravity="center_horizontal"
-        style="@style/edit_text"
         android:imeActionLabel="@string/join"
         android:imeOptions="actionNone"/>
 
     <Button
-        android:background="@drawable/blue_button"
         android:id="@+id/join_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Join"
-        style="@style/button_text"
         android:layout_marginTop="100dp"
         android:onClick="join"/>
 
