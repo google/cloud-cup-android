@@ -17,10 +17,10 @@
 
         <activity
             android:name="com.example.mirnabouchra.cloudolympics.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -34,11 +34,19 @@
         </activity>
 
         <activity
-            android:name="com.example.mirnabouchra.cloudolympics.TappingGameActivity"
-            android:label="@string/app_name" >
+            android:name=".games.TappingGameActivity"
+            android:label="@string/tapGameTitle"
+            android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
+        <activity
+            android:name=".games.ShakingGameActivity"
+            android:label="@string/shakeGameTitle"
+            android:screenOrientation="portrait">
+            <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
