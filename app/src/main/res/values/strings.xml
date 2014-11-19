@@ -15,4 +15,6 @@
     <string name="shakeGameTitle">Shake</string>
     <string name="shakeGameMessage">Shake your phone!</string>
 
+    <string name="waitingRoomMessage">Waiting room</string>
+
 </resources>

@@ -3,6 +3,7 @@ package com.example.mirnabouchra.cloudolympics.games;
 import android.os.Bundle;
 
 import com.example.mirnabouchra.cloudolympics.GameActivity;
+import com.example.mirnabouchra.cloudolympics.R;
 
 /**
  * A default Activity that extends GameActivity which decided which game should be started.
@@ -14,5 +15,6 @@ public class BlankGameActivity extends GameActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.blank_game_activity);
     }
 }

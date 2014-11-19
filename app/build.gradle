@@ -1,10 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-
+    signingConfigs {
+        config {
+            keyAlias 'AndroidReleaseKey'
+            keyPassword 'android'
+            storeFile file('/Users/mirnabouchra/keystores/android.jks')
+            storePassword 'android'
+        }
+    }
     compileSdkVersion 15
     buildToolsVersion "19.1.0"
-
     defaultConfig {
         applicationId "com.example.mirnabouchra.cloudolympics"
         minSdkVersion 15
@@ -16,6 +22,7 @@ android {
         release {
             runProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
     packagingOptions {
@@ -36,8 +43,6 @@ android {
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/LGPL2.1'
     }
-
-
 }
 
 dependencies {
