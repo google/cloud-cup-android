@@ -1,13 +1,8 @@
-package com.example.mirnabouchra.cloudolympics;
+package com.example.mirnabouchra.cloudolympics.games;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+import com.example.mirnabouchra.cloudolympics.GameActivity;
 
 /**
  * A default Activity that extends GameActivity which decided which game should be started.

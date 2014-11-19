@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.example.mirnabouchra.cloudolympics.games.BlankGameActivity;
+import com.example.mirnabouchra.cloudolympics.games.ShakingGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.TappingGameActivity;
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -79,7 +79,7 @@ public class GameActivity extends Activity {
     private void startGame() {
         if (gameType.equals("run")) {
             Log.d(LOG_TAG, "Run!");
-            Intent intent = new Intent(getBaseContext(), TappingGameActivity.class);
+            Intent intent = new Intent(this, TappingGameActivity.class);
             intent.putExtra("playerId", playerID);
             intent.putExtra("code", code);
             intent.putExtra("number", gameNumber);
@@ -89,7 +89,7 @@ public class GameActivity extends Activity {
         } else if (gameType.equals("shake")) {
             Log.d(LOG_TAG, "Shake!");
             // start shake activity
-            Intent intent = new Intent(getBaseContext(), BlankGameActivity.class);
+            Intent intent = new Intent(this, ShakingGameActivity.class);
             intent.putExtra("playerId", playerID);
             intent.putExtra("code", code);
             intent.putExtra("number", gameNumber);

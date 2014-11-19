@@ -2,7 +2,6 @@ package com.example.mirnabouchra.cloudolympics;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -11,12 +10,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.mirnabouchra.cloudolympics.games.BlankGameActivity;
 import com.google.android.gms.common.ConnectionResult;
 import android.content.IntentSender.SendIntentException;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.firebase.client.Firebase;
-import com.google.android.gms.common.GooglePlayServicesClient.ConnectionCallbacks;
-import com.google.android.gms.common.GooglePlayServicesClient.OnConnectionFailedListener;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
