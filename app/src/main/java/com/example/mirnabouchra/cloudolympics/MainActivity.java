@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import android.content.IntentSender.SendIntentException;
@@ -27,7 +28,7 @@ public class MainActivity extends Activity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    private EditText username;
+    private TextView username;
     private EditText code;
     private Firebase firebase;
 
@@ -56,7 +57,7 @@ public class MainActivity extends Activity implements
                 .build();
 
         firebase = new Firebase("https://cloud-olympics.firebaseio.com/");
-        username = (EditText) findViewById(R.id.username);
+        username = (TextView) findViewById(R.id.username);
         code = (EditText) findViewById(R.id.code);
     }
 
@@ -98,17 +99,23 @@ public class MainActivity extends Activity implements
 
     public void join(View view) {
         Intent intent = new Intent(this, JoinActivity.class);
+        // Get data of current signed-in user
+        Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+        intent.putExtra("playerName", currentPerson.getDisplayName());
+        // Add code to the intent
         String codeValue = code.getText().toString();
-        String usernameValue = username.getText().toString();
-        intent.putExtra("playerName", usernameValue);
         intent.putExtra("code", codeValue);
+        // Register data in Firebase
         Firebase ref = firebase.child("room/" + codeValue + "/players");
         Firebase pushRef = ref.push();
         Map<String, String> user = new HashMap<String, String>();
-        user.put("name", usernameValue);
+        user.put("name", currentPerson.getDisplayName());
+        user.put("imageUrl", currentPerson.getImage().getUrl());
         pushRef.setValue(user);
         String key = pushRef.getKey();
+        // Add player key to intent
         intent.putExtra("playerId", key);
+        // Start the intent
         startActivity(intent);
     }
 
@@ -138,10 +145,10 @@ public class MainActivity extends Activity implements
     }
 
     public void onConnected(Bundle connectionHint) {
-        // Get user info
         Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-        Toast.makeText(this, currentPerson.getDisplayName() + " is connected!", Toast.LENGTH_LONG).show();
-        Log.d(LOG_TAG, currentPerson.getDisplayName());
+        Toast.makeText(this, currentPerson.getDisplayName() + " is connected!",
+                Toast.LENGTH_LONG).show();
+        username.setText(currentPerson.getDisplayName());
         Log.d(LOG_TAG, currentPerson.getImage().getUrl());
     }
 
