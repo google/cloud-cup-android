@@ -3,6 +3,7 @@ package com.example.mirnabouchra.cloudolympics;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +25,7 @@ import java.util.Map;
 import java.util.Random;
 
 
-public class MainActivity extends Activity implements
+public class MainActivity extends ActionBarActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 

@@ -3,6 +3,7 @@ package com.example.mirnabouchra.cloudolympics;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
 import com.example.mirnabouchra.cloudolympics.games.BlankGameActivity;
@@ -18,7 +19,7 @@ import com.firebase.client.ValueEventListener;
 /**
  * Created by steren
  */
-public class GameActivity extends Activity {
+public class GameActivity extends ActionBarActivity {
     private static final String LOG_TAG = GameActivity.class.getSimpleName();
     protected Firebase firebaseRef;
     protected String code;
