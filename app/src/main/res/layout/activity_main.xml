@@ -1,36 +1,69 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
     android:padding="20dp" tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="100dp"
-        android:hint="@string/enter_username"
-        android:inputType="textPersonName"
-        android:layout_gravity="center_horizontal"/>
+    <LinearLayout android:id="@+id/user_data"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-    <EditText
-        android:id="@+id/code"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="180dp"
-        android:hint="@string/enter_code"
-        android:inputType="number"
-        android:layout_gravity="center_horizontal"
-        android:imeActionLabel="@string/join"
-        android:imeOptions="actionNone"/>
+        <ImageView android:id="@+id/user_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="User image"
+            android:layout_gravity="center_horizontal"/>
 
-    <Button
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:orientation="vertical"
+        android:paddingLeft="?android:listPreferredItemPaddingLeft"
+        android:paddingRight="?android:listPreferredItemPaddingRight"
+        android:gravity="center_vertical"
+        android:background="?android:selectableItemBackground">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:layout_gravity="center_horizontal"
+            android:text="Visit http://www.cloudcup.com"/>
+
+        <EditText
+            android:id="@+id/code"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:hint="@string/enter_code"
+            android:inputType="number"
+            android:layout_gravity="center_horizontal"
+            android:imeActionLabel="@string/join"
+            android:imeOptions="actionNone"
+            android:focusable="true"/>
+    </LinearLayout>
+
+
+    <!--<Button
         android:id="@+id/join_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:text="Join"
         android:layout_marginTop="100dp"
-        android:onClick="join"/>
+        android:onClick="join"/>-->
 
-</RelativeLayout>
+</LinearLayout>

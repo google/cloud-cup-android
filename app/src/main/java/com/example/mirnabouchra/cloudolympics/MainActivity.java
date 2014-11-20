@@ -2,6 +2,10 @@ package com.example.mirnabouchra.cloudolympics;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -9,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +26,8 @@ import com.firebase.client.Firebase;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
+import java.io.InputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -29,6 +37,37 @@ public class MainActivity extends ActionBarActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
+
+    class DownloadImageAsyncTask extends AsyncTask<Uri, Void, Bitmap> {
+        private Uri uri;
+
+        @Override
+        protected Bitmap doInBackground(Uri... params) {
+            uri = params[0];
+            // URI scheme must be 'https' (for downloaded images), 'content' (for shared images), or
+            // 'file' (for camera images).
+            if (!(uri.getScheme().equals("https") || uri.getScheme().equals("content")
+                    || uri.getScheme().equals("file"))) {
+                return null;
+            }
+            try {
+                return BitmapUtils.decodeBitmapBounded(
+                        BitmapUtils.getInputStream(MainActivity.this, uri), 90, 90);
+            } catch (IOException e) {
+                Log.e(LOG_TAG, "Error reading bitmap", e);
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            if (result != null) {
+                userImage.setImageBitmap(result);
+            }
+        }
+    }
+
+    private ImageView userImage;
     private TextView username;
     private EditText code;
     private Firebase firebase;
@@ -59,6 +98,7 @@ public class MainActivity extends ActionBarActivity implements
 
         firebase = new Firebase("https://cloud-olympics.firebaseio.com/");
         username = (TextView) findViewById(R.id.username);
+        userImage = (ImageView) findViewById(R.id.user_image);
         code = (EditText) findViewById(R.id.code);
     }
 
@@ -89,6 +129,9 @@ public class MainActivity extends ActionBarActivity implements
         Log.d(LOG_TAG, "onStart");
         super.onStart();
         mGoogleApiClient.connect();
+        //code.setFocusable(true);
+        //code.setFocusableInTouchMode(true);
+        code.requestFocus();
     }
 
     protected void onStop() {
@@ -165,6 +208,7 @@ public class MainActivity extends ActionBarActivity implements
         Toast.makeText(this, currentPerson.getDisplayName() + " is connected!",
                 Toast.LENGTH_LONG).show();
         username.setText(currentPerson.getDisplayName());
+        new DownloadImageAsyncTask().execute(Uri.parse(currentPerson.getImage().getUrl()));
         Log.d(LOG_TAG, currentPerson.getImage().getUrl());
     }
 
