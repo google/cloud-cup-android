@@ -162,8 +162,9 @@ public class MainActivity extends ActionBarActivity implements
         if(mGoogleApiClient.isConnected()) {
             // Get data of current signed-in user
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-            playerName = currentPerson.getDisplayName();
+            playerName = currentPerson.getName().getGivenName();
             imageUrl = getUserImageUrl(currentPerson);
+
         } else {
             Random rand = new Random();
             playerName = "Anonymous " + rand.nextInt(10);
@@ -224,11 +225,10 @@ public class MainActivity extends ActionBarActivity implements
 
     public void onConnected(Bundle connectionHint) {
         Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-        Toast.makeText(this, currentPerson.getDisplayName() + " is connected!",
+        Toast.makeText(this, "Welcome, " + currentPerson.getName().getGivenName() + "!",
                 Toast.LENGTH_LONG).show();
-        username.setText(currentPerson.getDisplayName());
+        username.setText(currentPerson.getName().getGivenName());
         new DownloadImageAsyncTask().execute(Uri.parse(getUserImageUrl(currentPerson)));
-        Log.d(LOG_TAG, currentPerson.getImage().getUrl());
     }
 
     public void onConnectionSuspended(int cause) {

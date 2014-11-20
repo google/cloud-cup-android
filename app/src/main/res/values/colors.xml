@@ -3,4 +3,8 @@
     <color name="material_blue_500">#2196F3</color>
     <color name="material_blue_700">#1976D2</color>
     <color name="material_green_A200">#69F0AE</color>
+
+    <color name="material_amber_500">#FFC107</color>
+    <color name="material_amber_700">#FFA000</color>
+    <color name="material_teal_A200">#64FFDA</color>
 </resources>
