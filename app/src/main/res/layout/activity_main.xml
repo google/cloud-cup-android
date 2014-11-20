@@ -52,7 +52,6 @@
             android:inputType="number"
             android:layout_gravity="center_horizontal"
             android:imeActionLabel="@string/join"
-            android:imeOptions="actionNone"
             android:focusable="true"/>
     </LinearLayout>
 

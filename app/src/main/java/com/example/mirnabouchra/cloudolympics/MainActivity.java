@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.TextView.OnEditorActionListener;
+import android.view.inputmethod.EditorInfo;
 
 import com.example.mirnabouchra.cloudolympics.games.BlankGameActivity;
 import com.google.android.gms.common.ConnectionResult;
@@ -100,6 +103,14 @@ public class MainActivity extends ActionBarActivity implements
         username = (TextView) findViewById(R.id.username);
         userImage = (ImageView) findViewById(R.id.user_image);
         code = (EditText) findViewById(R.id.code);
+        code.requestFocus();
+        code.setOnEditorActionListener(new OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                join();
+                return true;
+            }
+        });
     }
 
 
@@ -141,7 +152,7 @@ public class MainActivity extends ActionBarActivity implements
         }
     }
 
-    public void join(View view) {
+    public void join() {
         Intent intent = new Intent(this, BlankGameActivity.class);
 
         String codeValue = code.getText().toString();
@@ -152,12 +163,7 @@ public class MainActivity extends ActionBarActivity implements
             // Get data of current signed-in user
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
             playerName = currentPerson.getDisplayName();
-            imageUrl = currentPerson.getImage().getUrl();
-
-            // re-create the image URL with a larger size
-            String sizeSplit = "sz=";
-            String[] parts = imageUrl.split(sizeSplit);
-            imageUrl = parts[0] + sizeSplit + 500;
+            imageUrl = getUserImageUrl(currentPerson);
         } else {
             Random rand = new Random();
             playerName = "Anonymous " + rand.nextInt(10);
@@ -183,6 +189,14 @@ public class MainActivity extends ActionBarActivity implements
         startActivity(intent);
     }
 
+    private String getUserImageUrl(Person person) {
+        String imageUrl = person.getImage().getUrl();
+        // re-create the image URL with a larger size
+        String sizeSplit = "sz=";
+        String[] parts = imageUrl.split(sizeSplit);
+        imageUrl = parts[0] + sizeSplit + 500;
+        return imageUrl;
+    }
     public void onConnectionFailed(ConnectionResult result) {
         if (!mIntentInProgress && result.hasResolution()) {
             try {
@@ -213,7 +227,7 @@ public class MainActivity extends ActionBarActivity implements
         Toast.makeText(this, currentPerson.getDisplayName() + " is connected!",
                 Toast.LENGTH_LONG).show();
         username.setText(currentPerson.getDisplayName());
-        new DownloadImageAsyncTask().execute(Uri.parse(currentPerson.getImage().getUrl()));
+        new DownloadImageAsyncTask().execute(Uri.parse(getUserImageUrl(currentPerson)));
         Log.d(LOG_TAG, currentPerson.getImage().getUrl());
     }
 
