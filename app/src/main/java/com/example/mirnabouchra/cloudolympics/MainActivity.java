@@ -3,6 +3,9 @@ package com.example.mirnabouchra.cloudolympics;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -65,7 +68,8 @@ public class MainActivity extends ActionBarActivity implements
         @Override
         protected void onPostExecute(Bitmap result) {
             if (result != null) {
-                userImage.setImageBitmap(result);
+                BitmapDrawable bitmap = new BitmapDrawable(result);
+                userImage.setImageDrawable(new RoundedAvatarDrawable(result));
             }
         }
     }
@@ -213,7 +217,6 @@ public class MainActivity extends ActionBarActivity implements
     protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
         if (requestCode == RC_SIGN_IN) {
             mIntentInProgress = false;
-
             if (!mGoogleApiClient.isConnecting()) {
                 mGoogleApiClient.connect();
             }
