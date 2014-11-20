@@ -175,10 +175,10 @@ public class MainActivity extends ActionBarActivity implements
         // Register player data in Firebase
         Firebase ref = firebase.child("room/" + codeValue + "/players");
         Firebase pushRef = ref.push();
-        Map<String, String> user = new HashMap<String, String>();
+        Map<String, Object> user = new HashMap<String, Object>();
         user.put("name", playerName);
         user.put("imageUrl", imageUrl);
-        user.put("score", "0");
+        user.put("score", 0);
         pushRef.setValue(user);
         String key = pushRef.getKey();
 
