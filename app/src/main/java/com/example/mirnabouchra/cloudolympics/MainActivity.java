@@ -122,6 +122,7 @@ public class MainActivity extends ActionBarActivity implements
         Map<String, String> user = new HashMap<String, String>();
         user.put("name", playerName);
         user.put("imageUrl", imageUrl);
+        user.put("score", "0");
         pushRef.setValue(user);
         String key = pushRef.getKey();
 
