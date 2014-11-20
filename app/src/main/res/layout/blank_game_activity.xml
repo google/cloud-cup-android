@@ -4,15 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/waitingRoomMessage"
-        android:id="@+id/tapContent"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical"
-        android:singleLine="true" />
+    <!--<fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/players_list_fragment"
+        android:name="com.example.mirnabouchra.cloudolympics.games.BlankGameActivity$PlayersListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.mirnabouchra.cloudolympics.games.BlankGameActivity$PlayersListFragment"
+        tools:layout="@layout/fragment_players_list"/>-->
+
+    <GridView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/gridview"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:clipToPadding="false"
+        android:columnWidth="@dimen/grid_view_column_width"
+        android:gravity="center"
+        android:numColumns="3"
+        android:scrollbarStyle="outsideOverlay"
+        android:stretchMode="columnWidth"/>
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/startButton"
