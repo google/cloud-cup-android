@@ -13,6 +13,9 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.logging.Logger;
+
 
 /**
  * Created by steren
@@ -85,25 +88,24 @@ public class GameActivity extends Activity {
         if (currentGame.equals("-1")) return;
         if (currentIntent != null && currentIntent.getStringExtra("number") != null &&
                 currentIntent.getStringExtra("number").equals(currentGame)) return;
-        if (gameType.equals("tap")) {
-            Log.d(LOG_TAG, "tap!");
-            Intent intent = new Intent(this, TappingGameActivity.class);
+
+
+        HashMap<String, Class> gameMapping = new HashMap<String, Class>();
+        gameMapping.put("tap", TappingGameActivity.class);
+        gameMapping.put("shake", ShakingGameActivity.class);
+
+        Class cls = gameMapping.get(gameType);
+
+        if(cls != null ) {
+            Intent intent = new Intent(this, cls);
             intent.putExtra("playerId", playerID);
             intent.putExtra("code", code);
             intent.putExtra("number", currentGame);
             currentIntent = intent;
             startActivity(intent);
             finish();
-        } else if (gameType.equals("shake")) {
-            Log.d(LOG_TAG, "Shake!");
-            // start shake activity
-            Intent intent = new Intent(this, ShakingGameActivity.class);
-            intent.putExtra("playerId", playerID);
-            intent.putExtra("code", code);
-            intent.putExtra("number", currentGame);
-            currentIntent = intent;
-            startActivity(intent);
-            finish();
+        } else {
+            Log.e(LOG_TAG, "Game Type unknown: " + gameType);
         }
     }
 }
