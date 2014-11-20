@@ -3,10 +3,8 @@ package com.example.mirnabouchra.cloudolympics;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
-import com.example.mirnabouchra.cloudolympics.games.BlankGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.ShakingGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.TappingGameActivity;
 
@@ -26,7 +24,8 @@ public class GameActivity extends Activity {
     protected String playerID;
     protected Intent currentIntent;
     protected String gameType = "";
-    protected String gameNumber;
+    protected String currentGame;
+    private Firebase gameTypeRef;
 
     // Called when the activity is first created.
     @Override
@@ -41,7 +40,7 @@ public class GameActivity extends Activity {
         playerID = getIntent().getStringExtra("playerId");
         Log.d(LOG_TAG, "Player ID is " + playerID);
 
-        gameNumber = getIntent().getStringExtra("number") != null ?
+        currentGame = getIntent().getStringExtra("number") != null ?
                 getIntent().getStringExtra("number") : "-1";
 
         currentIntent = getIntent();
@@ -55,30 +54,31 @@ public class GameActivity extends Activity {
         firebaseRef = firebaseRef.child("players");
         firebaseRef = firebaseRef.child(playerID);
 
-        final Firebase gameRef = new Firebase(Consts.FIREBASE_URL + "/room/" + code + "/game");
-        gameRef.child("type").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() != null && !dataSnapshot.getValue().toString().isEmpty()
-                        /* && !gameType.equals(dataSnapshot.getValue().toString()) */) {
-                    gameType = (String) dataSnapshot.getValue();
-                    //if (currentIntent == null) {
-                        startGame();
-                    //}
-                    }
-
-            }
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-        });
-
-        gameRef.child("number").addValueEventListener(new ValueEventListener() {
+        //gameTypeRef = new Firebase(Consts.FIREBASE_URL + "/room/" + code + "/games/" +
+        //        currentGame);
+        Firebase currentGameRef = new Firebase(Consts.FIREBASE_URL + "/room/" + code);
+        currentGameRef.child("currentGame").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-             if (snapshot.getValue() != null && !snapshot.getValue().toString().equals("-1") &&
-                     !gameNumber.equals(snapshot.getValue().toString())) {
-                    gameNumber = snapshot.getValue().toString();
+                if (snapshot.getValue() != null && !snapshot.getValue().toString().equals("-1") &&
+                        !currentGame.equals(snapshot.getValue().toString())) {
+                    currentGame = snapshot.getValue().toString();
+                    gameTypeRef = new Firebase(Consts.FIREBASE_URL + "/room/" + code + "/games/" +
+                            currentGame);
+                    gameTypeRef.child("type").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.getValue() != null &&
+                                    !dataSnapshot.getValue().toString().isEmpty()) {
+                                Log.d(LOG_TAG, "gameType is now " + dataSnapshot.getValue());
+                                gameType = (String) dataSnapshot.getValue();
+                                startGame();
+                            }
+                        }
+                        @Override
+                        public void onCancelled(FirebaseError firebaseError) {
+                        }
+                    });
                     startGame();
                 }
             }
@@ -89,15 +89,15 @@ public class GameActivity extends Activity {
 
     private void startGame() {
         if (gameType == null || gameType.isEmpty()) return;
-        if (gameNumber.equals(-1)) return;
+        if (currentGame.equals("-1")) return;
         if (currentIntent != null && currentIntent.getStringExtra("number") != null &&
-                currentIntent.getStringExtra("number").equals(gameNumber)) return;
+                currentIntent.getStringExtra("number").equals(currentGame)) return;
         if (gameType.equals("tap")) {
             Log.d(LOG_TAG, "tap!");
             Intent intent = new Intent(this, TappingGameActivity.class);
             intent.putExtra("playerId", playerID);
             intent.putExtra("code", code);
-            intent.putExtra("number", gameNumber);
+            intent.putExtra("number", currentGame);
             currentIntent = intent;
             startActivity(intent);
             finish();
@@ -107,7 +107,7 @@ public class GameActivity extends Activity {
             Intent intent = new Intent(this, ShakingGameActivity.class);
             intent.putExtra("playerId", playerID);
             intent.putExtra("code", code);
-            intent.putExtra("number", gameNumber);
+            intent.putExtra("number", currentGame);
             currentIntent = intent;
             startActivity(intent);
             finish();
