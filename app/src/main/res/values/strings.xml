@@ -10,6 +10,8 @@
     <string name="enter_username">Enter username</string>
     <string name="visit_message">Visit go/cloud-cup on a big screen.</string>
 
+    <string name="start">Start</string>
+
     <string name="tapGameTitle">Tap</string>
     <string name="tapGameMessage">Tap here!</string>
 
