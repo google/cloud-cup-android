@@ -55,14 +55,4 @@
             android:imeActionLabel="@string/join"/>
     </LinearLayout>
 
-
-    <!--<Button
-        android:id="@+id/join_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Join"
-        android:layout_marginTop="100dp"
-        android:onClick="join"/>-->
-
 </LinearLayout>
