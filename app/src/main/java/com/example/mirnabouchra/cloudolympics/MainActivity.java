@@ -153,6 +153,11 @@ public class MainActivity extends ActionBarActivity implements
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
             playerName = currentPerson.getDisplayName();
             imageUrl = currentPerson.getImage().getUrl();
+
+            // re-create the image URL with a larger size
+            String sizeSplit = "sz=";
+            String[] parts = imageUrl.split(sizeSplit);
+            imageUrl = parts[0] + sizeSplit + 500;
         } else {
             Random rand = new Random();
             playerName = "Anonymous " + rand.nextInt(10);
