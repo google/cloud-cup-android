@@ -108,9 +108,9 @@ public class MainActivity extends ActionBarActivity implements
         if(mGoogleApiClient.isConnected()) {
             // Get data of current signed-in user
             Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-            playerName = currentPerson.getDisplayName();
-            imageUrl = currentPerson.getImage().getUrl();
+            playerName = currentPerson.getName().getGivenName();
 
+            imageUrl = currentPerson.getImage().getUrl();
             // re-create the image URL with a larger size
             String sizeSplit = "sz=";
             String[] parts = imageUrl.split(sizeSplit);
@@ -167,9 +167,9 @@ public class MainActivity extends ActionBarActivity implements
 
     public void onConnected(Bundle connectionHint) {
         Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-        Toast.makeText(this, currentPerson.getDisplayName() + " is connected!",
+        Toast.makeText(this, "Welcome, " + currentPerson.getName().getGivenName() + "!",
                 Toast.LENGTH_LONG).show();
-        username.setText(currentPerson.getDisplayName());
+        username.setText(currentPerson.getName().getGivenName());
         Log.d(LOG_TAG, currentPerson.getImage().getUrl());
     }
 
