@@ -81,7 +81,7 @@ public class ShakingGameActivity extends GameActivity implements SensorEventList
                 shakeCount++;
 
                 Log.d(LOG_TAG, "SHAKE! " + shakeCount);
-                firebaseRef.setValue(shakeCount);
+                gameDataRef.setValue(shakeCount);
             }
 
             // if previous recorded acceleration hasn't been set already

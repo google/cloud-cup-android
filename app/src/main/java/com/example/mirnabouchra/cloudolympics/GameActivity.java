@@ -19,7 +19,7 @@ import com.firebase.client.ValueEventListener;
  */
 public class GameActivity extends Activity {
     private static final String LOG_TAG = GameActivity.class.getSimpleName();
-    protected Firebase firebaseRef;
+    protected Firebase gameDataRef;
     protected String code;
     protected String playerID;
     protected Intent currentIntent;
@@ -46,16 +46,9 @@ public class GameActivity extends Activity {
         currentIntent = getIntent();
 
         Firebase.setAndroidContext(this);
-        firebaseRef = new Firebase(Consts.FIREBASE_URL);
-        firebaseRef = firebaseRef.child("room");
-        firebaseRef = firebaseRef.child(code);
-        firebaseRef = firebaseRef.child("game");
-        firebaseRef = firebaseRef.child("data");
-        firebaseRef = firebaseRef.child("players");
-        firebaseRef = firebaseRef.child(playerID);
+        gameDataRef = new Firebase(Consts.FIREBASE_URL + "/room/" + code + "/games/" +
+                currentGame + "/data/" + playerID);
 
-        //gameTypeRef = new Firebase(Consts.FIREBASE_URL + "/room/" + code + "/games/" +
-        //        currentGame);
         Firebase currentGameRef = new Firebase(Consts.FIREBASE_URL + "/room/" + code);
         currentGameRef.child("currentGame").addValueEventListener(new ValueEventListener() {
             @Override

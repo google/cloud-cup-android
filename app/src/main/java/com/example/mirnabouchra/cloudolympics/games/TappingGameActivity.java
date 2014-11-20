@@ -25,7 +25,7 @@ public class TappingGameActivity extends GameActivity {
             tapCount++;
             Log.d(LOG_TAG, "tap count: " + tapCount);
 
-            firebaseRef.setValue(tapCount);
+            gameDataRef.setValue(tapCount);
             return true;
         }
     }
