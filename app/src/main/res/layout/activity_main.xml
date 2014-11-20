@@ -8,7 +8,7 @@
     <LinearLayout android:id="@+id/user_data"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.7"
         android:orientation="vertical"
         android:gravity="center_vertical">
 
@@ -22,7 +22,9 @@
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:textSize="30sp"
+            android:text="Mirna"/>
 
     </LinearLayout>
 
@@ -31,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.4"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:paddingLeft="?android:listPreferredItemPaddingLeft"
         android:paddingRight="?android:listPreferredItemPaddingRight"
@@ -49,10 +52,15 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.7"
+            android:layout_marginTop="20dp"
             android:hint="@string/enter_code"
             android:inputType="number"
             android:layout_gravity="center_horizontal"
-            android:imeActionLabel="@string/join"/>
+            android:imeActionLabel="@string/join"
+            android:layout_centerInParent="true"
+            android:ellipsize="start"
+            android:gravity="center_horizontal"
+            android:textSize="28sp"/>
     </LinearLayout>
 
 </LinearLayout>
