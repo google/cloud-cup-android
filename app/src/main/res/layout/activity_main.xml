@@ -41,7 +41,8 @@
             android:layout_height="0dp"
             android:layout_weight="0.3"
             android:layout_gravity="center_horizontal"
-            android:text="Visit http://www.cloudcup.com"/>
+            android:gravity="center"
+            android:text="@string/visit_message"/>
 
         <EditText
             android:id="@+id/code"
@@ -51,8 +52,7 @@
             android:hint="@string/enter_code"
             android:inputType="number"
             android:layout_gravity="center_horizontal"
-            android:imeActionLabel="@string/join"
-            android:focusable="true"/>
+            android:imeActionLabel="@string/join"/>
     </LinearLayout>
 
 
