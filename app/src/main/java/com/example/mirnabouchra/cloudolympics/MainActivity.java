@@ -107,7 +107,6 @@ public class MainActivity extends ActionBarActivity implements
         username = (TextView) findViewById(R.id.username);
         userImage = (ImageView) findViewById(R.id.user_image);
         code = (EditText) findViewById(R.id.code);
-        code.requestFocus();
         code.setOnEditorActionListener(new OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -115,6 +114,7 @@ public class MainActivity extends ActionBarActivity implements
                 return true;
             }
         });
+        code.requestFocus();
     }
 
 
@@ -144,7 +144,6 @@ public class MainActivity extends ActionBarActivity implements
         Log.d(LOG_TAG, "onStart");
         super.onStart();
         mGoogleApiClient.connect();
-        code.requestFocus();
     }
 
     protected void onStop() {
@@ -197,7 +196,7 @@ public class MainActivity extends ActionBarActivity implements
         // re-create the image URL with a larger size
         String sizeSplit = "sz=";
         String[] parts = imageUrl.split(sizeSplit);
-        imageUrl = parts[0] + sizeSplit + 500;
+        imageUrl = parts[0] + sizeSplit + "500";
         return imageUrl;
     }
     public void onConnectionFailed(ConnectionResult result) {
@@ -230,6 +229,8 @@ public class MainActivity extends ActionBarActivity implements
                 Toast.LENGTH_LONG).show();
         username.setText(currentPerson.getName().getGivenName());
         new DownloadImageAsyncTask().execute(Uri.parse(getUserImageUrl(currentPerson)));
+
+        code.requestFocus();
     }
 
     public void onConnectionSuspended(int cause) {
