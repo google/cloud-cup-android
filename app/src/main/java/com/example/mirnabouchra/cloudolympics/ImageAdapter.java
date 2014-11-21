@@ -78,7 +78,6 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.d(LOG_TAG, "Setting VIEW ---------");
         View grid;
         if (convertView == null) {
             grid = new View(mContext);

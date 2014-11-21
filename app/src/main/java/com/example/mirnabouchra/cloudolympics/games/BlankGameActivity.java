@@ -1,6 +1,5 @@
 package com.example.mirnabouchra.cloudolympics.games;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -107,8 +106,6 @@ public class BlankGameActivity extends GameActivity {
                         public void onCancelled(FirebaseError firebaseError) {
 
                         }
-
-
                     });
 
                 }
