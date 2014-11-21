@@ -1,7 +1,6 @@
 package com.example.mirnabouchra.cloudolympics.games;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -22,6 +21,7 @@ public class SequenceGameActivity extends GameActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         state = GameState.GAME;
+        sequence = "";
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sequence_game);
@@ -34,45 +34,30 @@ public class SequenceGameActivity extends GameActivity {
         blueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sequence.length() < 4) {
-                    sequence += "b";
-                }
-                sendSequence();
+                sequence += "b";
+                gameDataRef.setValue(sequence);
             }
         });
         redButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sequence.length() < 4) {
-                    sequence += "r";
-                }
-                sendSequence();
+                sequence += "r";
+                gameDataRef.setValue(sequence);
             }
         });
         greenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sequence.length() < 4) {
-                    sequence += "g";
-                }
-                sendSequence();
+                sequence += "g";
+                gameDataRef.setValue(sequence);
             }
         });
         yellowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (sequence.length() < 4) {
-                    sequence += "y";
-                }
-                sendSequence();
+                sequence += "y";
+                gameDataRef.setValue(sequence);
             }
         });
-    }
-
-    private void sendSequence() {
-        if (sequence.length() == 4) {
-            gameDataRef.setValue(sequence);
-            Log.d(LOG_TAG, "sequence is ----"  + sequence);
-        }
     }
 }
