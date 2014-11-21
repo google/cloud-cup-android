@@ -57,6 +57,17 @@
         </activity>
 
         <activity
+            android:name=".games.MathGameActivity"
+            android:label="@string/mathGameMessage"
+            android:screenOrientation="portrait"
+            android:noHistory="true"
+            android:windowSoftInputMode="stateVisible">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".games.ShakingGameActivity"
             android:label="@string/shakeGameTitle"
             android:screenOrientation="portrait"
