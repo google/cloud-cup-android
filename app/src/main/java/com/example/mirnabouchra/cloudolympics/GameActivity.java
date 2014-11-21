@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.mirnabouchra.cloudolympics.games.MathGameActivity;
+import com.example.mirnabouchra.cloudolympics.games.SequenceGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.ShakingGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.SwipeGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.TappingGameActivity;
@@ -124,6 +125,7 @@ public class GameActivity extends Activity {
         gameMapping.put("shake", ShakingGameActivity.class);
         gameMapping.put("swipe", SwipeGameActivity.class);
         gameMapping.put("turn", TurnGameActivity.class);
+        gameMapping.put("sequence", SequenceGameActivity.class);
 
         Class cls = gameMapping.get(gameType);
         // temporary for testing

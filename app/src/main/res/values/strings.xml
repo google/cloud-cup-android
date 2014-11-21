@@ -27,6 +27,8 @@
 
     <string name="waitingTitle">Get ready...</string>
     <string name="swipeGameTitle">Swipe up!</string>
+    <string name="sequenceGameTitle">Tap colors in order</string>
+    <string name="sequenceGameMessage">Tap the sequence!</string>
 
     waitingTitle
 
