@@ -86,6 +86,17 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".games.TurnGameActivity"
+            android:label="@string/turnGameMessage"
+            android:screenOrientation="portrait"
+            android:noHistory="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
