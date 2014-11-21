@@ -4,13 +4,8 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/waitingTitle"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_vertical"
-        android:singleLine="true" />
+        style="@style/gameTitle" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"
