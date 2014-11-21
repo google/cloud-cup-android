@@ -18,6 +18,8 @@
     <string name="shakeGameTitle">Shake</string>
     <string name="shakeGameMessage">Shake!</string>
 
+    <string name="turnGameMessage">Turn around!</string>
+
     <string name="mathGameMessage">Result</string>
     <string name="mathValidate">Send</string>
 

@@ -9,6 +9,7 @@ import com.example.mirnabouchra.cloudolympics.games.MathGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.ShakingGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.SwipeGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.TappingGameActivity;
+import com.example.mirnabouchra.cloudolympics.games.TurnGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.WaitingActivity;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -122,10 +123,11 @@ public class GameActivity extends Activity {
         gameMapping.put("tap", TappingGameActivity.class);
         gameMapping.put("shake", ShakingGameActivity.class);
         gameMapping.put("swipe", SwipeGameActivity.class);
+        gameMapping.put("turn", TurnGameActivity.class);
 
         Class cls = gameMapping.get(gameType);
         // temporary for testing
-        //cls = MathGameActivity.class;
+        //cls = TurnGameActivity.class;
 
         if(cls != null ) {
             openRoom(cls, playerID, code, currentGame);
