@@ -36,6 +36,8 @@ public class ShakingGameActivity extends GameActivity implements SensorEventList
     // Called when the activity is first created.
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        state = GameState.GAME;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shaking_game_activity);
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -8,22 +7,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/firstRoomTitle"
-        android:id="@+id/tapContent"
+        android:text="@string/waitingTitle"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical"
         android:singleLine="true" />
 
-    <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/startButton"
+    <ProgressBar
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_play_arrow_white_24dp"
-        fab:fab_colorNormal="@color/accent"
-        fab:fab_colorPressed="@color/material_teal_800"
-        fab:fab_colorRipple="@color/material_teal_A200"
-        />
+        android:layout_gravity="center_vertical|center_horizontal">
+    </ProgressBar>
 
 </FrameLayout>

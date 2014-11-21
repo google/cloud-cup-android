@@ -1,5 +1,6 @@
 package com.example.mirnabouchra.cloudolympics.games;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,8 @@ public class BlankGameActivity extends GameActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        state = GameState.GAME;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blank_game_activity);
 
