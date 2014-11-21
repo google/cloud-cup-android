@@ -15,7 +15,5 @@ public class BoilerplateGameActivity extends GameActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.boilerplate_game_activity);
-
-
     }
 }

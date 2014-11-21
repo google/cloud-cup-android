@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.mirnabouchra.cloudolympics.games.MathGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.ShakingGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.SwipeGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.TappingGameActivity;
@@ -117,11 +118,14 @@ public class GameActivity extends Activity {
                 currentIntent.getStringExtra("number").equals(currentGame)) return;
 
         HashMap<String, Class> gameMapping = new HashMap<String, Class>();
+        gameMapping.put("math", MathGameActivity.class);
         gameMapping.put("tap", TappingGameActivity.class);
         gameMapping.put("shake", ShakingGameActivity.class);
         gameMapping.put("swipe", SwipeGameActivity.class);
 
         Class cls = gameMapping.get(gameType);
+        // temporary for testing
+        //cls = MathGameActivity.class;
 
         if(cls != null ) {
             openRoom(cls, playerID, code, currentGame);
