@@ -65,6 +65,16 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".games.SwipeGameActivity"
+            android:label="@string/swipeGameTitle"
+            android:screenOrientation="portrait"
+            android:noHistory="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

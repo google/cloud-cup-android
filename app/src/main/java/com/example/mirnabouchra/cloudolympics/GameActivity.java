@@ -1,23 +1,20 @@
 package com.example.mirnabouchra.cloudolympics;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.mirnabouchra.cloudolympics.games.BlankGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.ShakingGameActivity;
+import com.example.mirnabouchra.cloudolympics.games.SwipeGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.TappingGameActivity;
-
 import com.example.mirnabouchra.cloudolympics.games.WaitingActivity;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.DataSnapshot;
 import com.firebase.client.ValueEventListener;
 
 import java.util.HashMap;
-import java.util.logging.Logger;
 
 
 /**
@@ -122,6 +119,7 @@ public class GameActivity extends Activity {
         HashMap<String, Class> gameMapping = new HashMap<String, Class>();
         gameMapping.put("tap", TappingGameActivity.class);
         gameMapping.put("shake", ShakingGameActivity.class);
+        gameMapping.put("swipe", SwipeGameActivity.class);
 
         Class cls = gameMapping.get(gameType);
 
