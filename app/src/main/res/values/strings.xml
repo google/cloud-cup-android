@@ -13,10 +13,10 @@
     <string name="start">Start</string>
 
     <string name="tapGameTitle">Tap</string>
-    <string name="tapGameMessage">Tap here!</string>
+    <string name="tapGameMessage">Tap!</string>
 
     <string name="shakeGameTitle">Shake</string>
-    <string name="shakeGameMessage">Shake your phone!</string>
+    <string name="shakeGameMessage">Shake!</string>
 
     <string name="mathGameMessage">Result</string>
     <string name="mathValidate">Send</string>
