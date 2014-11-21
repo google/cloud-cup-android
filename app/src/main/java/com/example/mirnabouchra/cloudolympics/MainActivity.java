@@ -1,12 +1,9 @@
 package com.example.mirnabouchra.cloudolympics;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentSender.SendIntentException;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,24 +12,18 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.TextView.OnEditorActionListener;
-import android.view.inputmethod.EditorInfo;
 
 import com.example.mirnabouchra.cloudolympics.games.BlankGameActivity;
-import com.google.android.gms.common.ConnectionResult;
-import android.content.IntentSender.SendIntentException;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.firebase.client.Firebase;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
 
-import java.io.InputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -225,8 +216,6 @@ public class MainActivity extends ActionBarActivity implements
 
     public void onConnected(Bundle connectionHint) {
         Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
-        Toast.makeText(this, "Welcome, " + currentPerson.getName().getGivenName() + "!",
-                Toast.LENGTH_LONG).show();
         username.setText(currentPerson.getName().getGivenName());
         new DownloadImageAsyncTask().execute(Uri.parse(getUserImageUrl(currentPerson)));
 
