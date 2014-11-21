@@ -1,0 +1,8 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:innerRadius="0dp"
+    android:shape="ring"
+    android:thicknessRatio="1.9"
+    android:useLevel="false">
+    <solid android:color="@android:color/transparent" />
+    <stroke android:color="@color/abc_background_cache_hint_selector_material_dark"/>
+</shape>
