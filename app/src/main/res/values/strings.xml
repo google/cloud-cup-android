@@ -30,6 +30,8 @@
     <string name="sequenceGameTitle">Tap colors in order</string>
     <string name="sequenceGameMessage">Tap the sequence!</string>
 
+    <string name="joiningMessage">Press play when everyone is ready</string>
+
     waitingTitle
 
 </resources>

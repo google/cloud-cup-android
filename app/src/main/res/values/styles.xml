@@ -18,4 +18,15 @@
         <item name="android:layout_marginTop">30sp</item>
     </style>
 
+    <style name="smallTitle">
+        <item name="android:singleLine">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceLarge</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center|top</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginTop">30sp</item>
+    </style>
+
 </resources>
