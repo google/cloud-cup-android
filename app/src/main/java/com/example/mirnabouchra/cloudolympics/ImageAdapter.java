@@ -3,16 +3,16 @@ package com.example.mirnabouchra.cloudolympics;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v4.util.LruCache;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -79,38 +79,29 @@ public class ImageAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.d(LOG_TAG, "Setting VIEW ---------");
-        LinearLayout layout;
-        ImageView imageView;
-        TextView textView;
-        //if (convertView == null) { // create a new view if no recycled view is available
-            layout = (LinearLayout) layoutInflater.inflate(
-                    R.layout.grid_view_item, parent, false /* attachToRoot */);
-            imageView = (ImageView) layout.findViewById(R.id.image);
-            textView = (TextView) layout.findViewById(R.id.name);
-        //} else {
-          //  imageView = (ImageView) convertView;
-            //imageView.setImageBitmap(null);
-            //textView = (TextView) convertView.findViewById(R.id.name);
-        //}
-        if (position >= imageUrls.size()) { // imageUrls not yet downloaded!
-            return imageView;
+        View grid;
+        if (convertView == null) {
+            grid = new View(mContext);
+            grid = layoutInflater.inflate(R.layout.grid_view_item, parent, false);
+        } else {
+            grid = (View) convertView;
         }
+        TextView textView = (TextView) grid.findViewById(R.id.grid_name);
+        final ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
+        textView.setText(names.get(position));
         String imageUrl = imageUrls.get(position);
-
-        Bitmap bitmap = imageCache.get(imageUrl);
+        final Bitmap bitmap = imageCache.get(imageUrl);
         if (bitmap != null) {
             imageView.setImageDrawable(new RoundedAvatarDrawable(bitmap));
-            // Use file name as content description.
-            imageView.setContentDescription(Uri.parse(imageUrl).getLastPathSegment());
-            Log.d(LOG_TAG, names.get(position));
-            textView.setText(names.get(position));
+            Animation myFadeInAnimation = AnimationUtils.loadAnimation(mContext, R.anim.abc_fade_in);
+            imageView.startAnimation(myFadeInAnimation);
         } else {
             if (!downloadingImageUrls.contains(imageUrl)) {
                 downloadingImageUrls.add(imageUrl);
                 new DownloadImageAsyncTask(imageUrl).execute();
             }
         }
-        return layout;
+        return grid;
     }
 
     public void setImageUrls(List<String> imageUrls) {
