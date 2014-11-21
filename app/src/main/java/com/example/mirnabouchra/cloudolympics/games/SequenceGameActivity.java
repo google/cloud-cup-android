@@ -1,5 +1,6 @@
 package com.example.mirnabouchra.cloudolympics.games;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
@@ -24,6 +25,7 @@ public class SequenceGameActivity extends GameActivity {
     public void onCreate(Bundle savedInstanceState) {
         state = GameState.GAME;
         sequence = "";
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sequence_game);
