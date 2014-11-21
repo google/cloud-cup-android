@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -82,6 +83,7 @@ public class ShakingGameActivity extends GameActivity implements SensorEventList
 
                 shakeCount++;
 
+                ((Vibrator) getSystemService(Context.VIBRATOR_SERVICE)).vibrate(100);
                 Log.d(LOG_TAG, "SHAKE! " + shakeCount);
                 gameDataRef.setValue(shakeCount);
             }

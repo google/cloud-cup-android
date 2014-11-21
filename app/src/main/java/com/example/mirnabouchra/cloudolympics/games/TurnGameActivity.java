@@ -6,6 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 
 import com.example.mirnabouchra.cloudolympics.GameActivity;
@@ -94,6 +95,7 @@ public class TurnGameActivity extends GameActivity implements SensorEventListene
         if( halfTurn && Math.abs(zAngle - originalAngle) < ANGLE_SENSIBILITY) {
             halfTurn = false;
             demiTurns++;
+            ((Vibrator) getSystemService(Context.VIBRATOR_SERVICE)).vibrate(100);
             sendTurnValues();
         }
 
