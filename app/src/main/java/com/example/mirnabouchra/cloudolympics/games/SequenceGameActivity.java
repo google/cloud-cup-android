@@ -1,6 +1,7 @@
 package com.example.mirnabouchra.cloudolympics.games;
 
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,6 +18,7 @@ public class SequenceGameActivity extends GameActivity {
     private Button greenButton;
     private Button yellowButton;
     private String sequence = "";
+    public Vibrator vibrator;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,30 +36,33 @@ public class SequenceGameActivity extends GameActivity {
         blueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sequence += "b";
-                gameDataRef.setValue(sequence);
+                onButtonClick("b");
             }
         });
         redButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sequence += "r";
-                gameDataRef.setValue(sequence);
+                onButtonClick("r");
             }
         });
         greenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sequence += "g";
-                gameDataRef.setValue(sequence);
+                onButtonClick("g");
             }
         });
         yellowButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sequence += "y";
-                gameDataRef.setValue(sequence);
+                onButtonClick("y");
             }
         });
     }
+
+    public void onButtonClick(String letter) {
+        sequence += letter;
+        vibrator.vibrate(100);
+        gameDataRef.setValue(sequence);
+    }
 }
+
