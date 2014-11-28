@@ -90,6 +90,8 @@
 
         <activity
             android:name=".games.TurnGameActivity"
+            android:screenOrientation="portrait"
+            android:noHistory="true"
             android:label="@string/turnGameMessage">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
