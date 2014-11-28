@@ -72,6 +72,9 @@ public class BlankGameActivity extends GameActivity {
         playersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() == null) {
+                    return;
+                }
                 Log.d(LOG_TAG, dataSnapshot.getValue().toString());
                 for (final DataSnapshot child : dataSnapshot.getChildren()) {
                     final Firebase playerName = child.getRef().child("name");

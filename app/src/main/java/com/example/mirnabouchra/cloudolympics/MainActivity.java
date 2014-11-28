@@ -94,7 +94,7 @@ public class MainActivity extends ActionBarActivity implements
                 .addScope(Plus.SCOPE_PLUS_LOGIN)
                 .build();
 
-        firebase = new Firebase("https://cloud-olympics.firebaseio.com/");
+        firebase = new Firebase(Consts.FIREBASE_URL);
         username = (TextView) findViewById(R.id.username);
         userImage = (ImageView) findViewById(R.id.user_image);
         code = (EditText) findViewById(R.id.code);
