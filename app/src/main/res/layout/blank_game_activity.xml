@@ -32,7 +32,6 @@
         android:src="@drawable/ic_play_arrow_white_24dp"
         fab:fab_colorNormal="@color/accent"
         fab:fab_colorPressed="@color/material_teal_800"
-        fab:fab_colorRipple="@color/material_teal_A200"
-        />
+        fab:fab_colorRipple="@color/material_teal_A200" />
 
 </FrameLayout>
