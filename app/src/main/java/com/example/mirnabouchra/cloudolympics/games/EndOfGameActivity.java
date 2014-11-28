@@ -29,11 +29,7 @@ public class EndOfGameActivity extends GameActivity {
         final ImageButton button = (ImageButton) findViewById(R.id.startButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // we should be at "done
-                stateRef.setValue("waiting");
-                currentGameRef.setValue(-1);
-
-                // TODO, change the player scores to 0
+                stateRef.setValue("restarted");
             }
         });
 
