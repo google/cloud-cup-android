@@ -29,6 +29,8 @@ public class EndOfGameActivity extends GameActivity {
     private Firebase playersRef;
     private ImageView winnerImage;
     private TextView winnerNameView;
+    private Firebase stateRef;
+    private Firebase currentGameRef;
 
     class DownloadImageAsyncTask extends AsyncTask<Uri, Void, Bitmap> {
         private Uri uri;
@@ -59,6 +61,8 @@ public class EndOfGameActivity extends GameActivity {
             }
         }
     }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         state = GameState.DONE;
@@ -99,12 +103,14 @@ public class EndOfGameActivity extends GameActivity {
         });
 
 
+        stateRef = new Firebase(Consts.FIREBASE_URL + "/room/" + code + "/state");
+        currentGameRef = new Firebase(Consts.FIREBASE_URL + "/room/" + code + "/currentGame");
 
 
         final ImageButton button = (ImageButton) findViewById(R.id.startButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                stateRef.setValue("restarted");
             }
         });
 
