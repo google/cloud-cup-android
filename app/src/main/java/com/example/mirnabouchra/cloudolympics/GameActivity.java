@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.mirnabouchra.cloudolympics.games.EndOfGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.MathGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.SequenceGameActivity;
 import com.example.mirnabouchra.cloudolympics.games.ShakingGameActivity;
@@ -27,7 +28,7 @@ public class GameActivity extends Activity {
     private static final String LOG_TAG = GameActivity.class.getSimpleName();
 
     public enum GameState {
-        WAITING, GAME
+        WAITING, GAME, DONE
     }
 
     protected Firebase gameDataRef;
@@ -70,10 +71,14 @@ public class GameActivity extends Activity {
         currentGameRef.child("state").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.getValue() != null
-                        && snapshot.getValue().toString().equals("waiting")
-                        && !state.equals(GameState.WAITING)) {
-                    openWaitingRoom();
+                if (snapshot.getValue() != null) {
+                    if(snapshot.getValue().toString().equals("waiting")
+                            && !state.equals(GameState.WAITING)) {
+                        openWaitingRoom();
+                    } else if(snapshot.getValue().toString().equals("done")
+                            && !state.equals(GameState.DONE)) {
+                        openEndOfGameRoom();
+                    }
                 }
             }
 
@@ -140,6 +145,10 @@ public class GameActivity extends Activity {
 
     private void openWaitingRoom() {
         openRoom(WaitingActivity.class, playerID, code, currentGame);
+    }
+
+    private void openEndOfGameRoom() {
+        openRoom(EndOfGameActivity.class, playerID, code, currentGame);
     }
 
     private void openRoom(Class cls, String playerID, String code, String currentGame) {

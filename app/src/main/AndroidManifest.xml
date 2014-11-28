@@ -38,6 +38,16 @@
         </activity>
 
         <activity
+            android:name=".games.EndOfGameActivity"
+            android:label="@string/gameOverTitle"
+            android:screenOrientation="portrait"
+            android:noHistory="true">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".games.BlankGameActivity"
             android:label="@string/firstRoomTitle"
             android:screenOrientation="portrait"

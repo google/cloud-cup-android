@@ -14,7 +14,7 @@ public class EndOfGameActivity extends GameActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        state = GameState.WAITING;
+        state = GameState.DONE;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.end_of_game);
