@@ -32,6 +32,8 @@
 
     <string name="joiningMessage">Press play when everyone is ready</string>
 
+    <string name="gameOverTitle">Game Over</string>
+
     waitingTitle
 
 </resources>
