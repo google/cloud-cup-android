@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="fill_parent"
+    android:padding="20dp" tools:context=".MainActivity"
+    android:orientation="vertical">
     <TextView
         android:text="@string/gameOverTitle"
         style="@style/gameTitle" />
+
+    <LinearLayout android:id="@+id/winner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+
+        <ImageView android:id="@+id/winner_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="User image"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:id="@+id/winner_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="30sp"/>
+
+    </LinearLayout>
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/startButton"
@@ -20,4 +44,4 @@
         fab:fab_colorRipple="@color/material_teal_A200"
         />
 
-</FrameLayout>
+</LinearLayout>
