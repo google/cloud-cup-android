@@ -5,7 +5,6 @@ android {
         config {
             keyAlias 'AndroidReleaseKey'
             keyPassword 'android'
-            storeFile file('/Users/mirnabouchra/keystores/android.jks')
             storePassword 'android'
         }
     }
@@ -20,7 +19,7 @@ android {
     }
     buildTypes {
         release {
-            runProguard false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.config
         }
