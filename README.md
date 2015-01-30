@@ -5,3 +5,5 @@ This repository contains the source code of the player screen of the Cloud Cup g
 It is an Android application, designed to be built using Android Studio.
 It relies on the [Firebase Android SDK](https://www.firebase.com/docs/android/api/) to provide backend and real-time features.
 
+This is not an official Google product (experimental or otherwise), it is just code that happens to be owned by Google.
+
