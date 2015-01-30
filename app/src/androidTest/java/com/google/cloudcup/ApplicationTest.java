@@ -14,12 +14,16 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics;
+package com.google.cloudcup;
+
+import android.app.Application;
+import android.test.ApplicationTestCase;
 
 /**
- * Created by steren on 11/18/14.
+ * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
  */
-public class Consts {
-    public static final String FIREBASE_URL = "https://cloud-cup.firebaseio.com";
+public class ApplicationTest extends ApplicationTestCase<Application> {
+    public ApplicationTest() {
+        super(Application.class);
+    }
 }
-

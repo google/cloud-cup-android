@@ -14,15 +14,15 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics.games;
+package com.google.cloudcup.games;
 
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.util.Log;
 
-import com.example.mirnabouchra.cloudolympics.GameActivity;
-import com.example.mirnabouchra.cloudolympics.R;
+import com.google.cloudcup.GameActivity;
+import com.google.cloudcup.R;
 
 
 /**

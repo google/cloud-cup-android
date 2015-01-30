@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics;
+package com.google.cloudcup;
 
 import android.content.ContentResolver;
 import android.content.Context;

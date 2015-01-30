@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.mirnabouchra.cloudolympics" >
+    package="com.google.cloudcup" >
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -17,7 +17,7 @@
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="com.example.mirnabouchra.cloudolympics.MainActivity"
+            android:name="com.google.cloudcup.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysVisible">
@@ -28,7 +28,7 @@
         </activity>
 
         <activity
-            android:name=".games.WaitingActivity"
+            android:name="com.google.cloudcup.games.WaitingActivity"
             android:label="@string/waitingTitle"
             android:screenOrientation="portrait"
             android:noHistory="true">
@@ -38,7 +38,7 @@
         </activity>
 
         <activity
-            android:name=".games.EndOfGameActivity"
+            android:name="com.google.cloudcup.games.EndOfGameActivity"
             android:label="@string/gameOverTitle"
             android:screenOrientation="portrait"
             android:noHistory="true">
@@ -48,7 +48,7 @@
         </activity>
 
         <activity
-            android:name=".games.BlankGameActivity"
+            android:name="com.google.cloudcup.games.BlankGameActivity"
             android:label="@string/firstRoomTitle"
             android:screenOrientation="portrait"
             android:noHistory="true">
@@ -58,7 +58,7 @@
         </activity>
 
         <activity
-            android:name=".games.TappingGameActivity"
+            android:name="com.google.cloudcup.games.TappingGameActivity"
             android:label="@string/tapGameTitle"
             android:screenOrientation="portrait"
             android:noHistory="true">
@@ -68,7 +68,7 @@
         </activity>
 
         <activity
-            android:name=".games.MathGameActivity"
+            android:name="com.google.cloudcup.games.MathGameActivity"
             android:label="@string/mathGameMessage"
             android:screenOrientation="portrait"
             android:noHistory="true"
@@ -79,7 +79,7 @@
         </activity>
 
         <activity
-            android:name=".games.ShakingGameActivity"
+            android:name="com.google.cloudcup.games.ShakingGameActivity"
             android:label="@string/shakeGameTitle"
             android:screenOrientation="portrait"
             android:noHistory="true">
@@ -89,7 +89,7 @@
         </activity>
 
         <activity
-            android:name=".games.SwipeGameActivity"
+            android:name="com.google.cloudcup.games.SwipeGameActivity"
             android:label="@string/swipeGameTitle"
             android:screenOrientation="portrait"
             android:noHistory="true">
@@ -99,7 +99,7 @@
         </activity>
 
         <activity
-            android:name=".games.TurnGameActivity"
+            android:name="com.google.cloudcup.games.TurnGameActivity"
             android:screenOrientation="portrait"
             android:noHistory="true"
             android:label="@string/turnGameMessage">
@@ -109,7 +109,7 @@
         </activity>
 
         <activity
-            android:name=".games.SequenceGameActivity"
+            android:name="com.google.cloudcup.games.SequenceGameActivity"
             android:label="@string/sequenceGameTitle"
             android:screenOrientation="portrait"
             android:noHistory="true">

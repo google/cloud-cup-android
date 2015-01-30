@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics;
+package com.google.cloudcup;
 
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
@@ -33,7 +33,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.example.mirnabouchra.cloudolympics.games.BlankGameActivity;
+import com.google.cloudcup.games.BlankGameActivity;
 import com.firebase.client.Firebase;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -44,6 +44,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
+import info.evelio.drawable.RoundedAvatarDrawable;
 
 
 public class MainActivity extends ActionBarActivity implements

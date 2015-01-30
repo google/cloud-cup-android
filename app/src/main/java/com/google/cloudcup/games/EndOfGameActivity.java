@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics.games;
+package com.google.cloudcup.games;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -27,11 +27,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.mirnabouchra.cloudolympics.BitmapUtils;
-import com.example.mirnabouchra.cloudolympics.Consts;
-import com.example.mirnabouchra.cloudolympics.GameActivity;
-import com.example.mirnabouchra.cloudolympics.R;
-import com.example.mirnabouchra.cloudolympics.RoundedAvatarDrawable;
+import com.google.cloudcup.BitmapUtils;
+import com.google.cloudcup.Consts;
+import com.google.cloudcup.GameActivity;
+import com.google.cloudcup.R;
+import info.evelio.drawable.RoundedAvatarDrawable;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;

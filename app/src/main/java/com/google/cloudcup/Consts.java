@@ -14,22 +14,12 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics.games;
+package com.google.cloudcup;
 
-import android.os.Bundle;
-
-import com.example.mirnabouchra.cloudolympics.GameActivity;
-import com.example.mirnabouchra.cloudolympics.R;
-
-
-public class BoilerplateGameActivity extends GameActivity {
-    private static final String LOG_TAG = BoilerplateGameActivity.class.getSimpleName();
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        state = GameState.GAME;
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.boilerplate_game_activity);
-    }
+/**
+ * Created by steren on 11/18/14.
+ */
+public class Consts {
+    public static final String FIREBASE_URL = "https://cloud-cup.firebaseio.com";
 }
+

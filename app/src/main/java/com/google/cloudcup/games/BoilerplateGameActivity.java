@@ -14,27 +14,22 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics.games;
+package com.google.cloudcup.games;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
 
-import com.example.mirnabouchra.cloudolympics.Consts;
-import com.example.mirnabouchra.cloudolympics.GameActivity;
-import com.example.mirnabouchra.cloudolympics.R;
-import com.firebase.client.Firebase;
+import com.google.cloudcup.GameActivity;
+import com.google.cloudcup.R;
 
-public class WaitingActivity extends GameActivity {
-    private static final String LOG_TAG = WaitingActivity.class.getSimpleName();
 
+public class BoilerplateGameActivity extends GameActivity {
+    private static final String LOG_TAG = BoilerplateGameActivity.class.getSimpleName();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        state = GameState.WAITING;
+        state = GameState.GAME;
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.waiting_activity);
-
+        setContentView(R.layout.boilerplate_game_activity);
     }
 }

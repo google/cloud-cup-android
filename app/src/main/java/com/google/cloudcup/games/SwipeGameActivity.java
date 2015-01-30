@@ -13,7 +13,7 @@ Copyright 2014 Google Inc. All rights reserved.
         See the License for the specific language governing permissions and
         limitations under the License.
 */
-package com.example.mirnabouchra.cloudolympics.games;
+package com.google.cloudcup.games;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,8 +21,8 @@ import android.os.Vibrator;
 import android.util.Log;
 import android.view.MotionEvent;
 
-import com.example.mirnabouchra.cloudolympics.GameActivity;
-import com.example.mirnabouchra.cloudolympics.R;
+import com.google.cloudcup.GameActivity;
+import com.google.cloudcup.R;
 
 /**
  * Created by mirnabouchra on 11/21/14.

@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics.games;
+package com.google.cloudcup.games;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -23,8 +23,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.mirnabouchra.cloudolympics.GameActivity;
-import com.example.mirnabouchra.cloudolympics.R;
+import com.google.cloudcup.GameActivity;
+import com.google.cloudcup.R;
 
 
 public class MathGameActivity extends GameActivity {

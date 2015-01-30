@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics;
+package com.google.cloudcup;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -38,6 +38,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import info.evelio.drawable.RoundedAvatarDrawable;
 
 public class ImageAdapter extends BaseAdapter {
     private static final String LOG_TAG = ImageAdapter.class.getSimpleName();

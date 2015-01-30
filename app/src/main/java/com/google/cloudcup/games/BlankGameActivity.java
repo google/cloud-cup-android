@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics.games;
+package com.google.cloudcup.games;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -22,10 +22,10 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
-import com.example.mirnabouchra.cloudolympics.Consts;
-import com.example.mirnabouchra.cloudolympics.GameActivity;
-import com.example.mirnabouchra.cloudolympics.ImageAdapter;
-import com.example.mirnabouchra.cloudolympics.R;
+import com.google.cloudcup.Consts;
+import com.google.cloudcup.GameActivity;
+import com.google.cloudcup.ImageAdapter;
+import com.google.cloudcup.R;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;

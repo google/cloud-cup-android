@@ -14,21 +14,21 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.example.mirnabouchra.cloudolympics;
+package com.google.cloudcup;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.mirnabouchra.cloudolympics.games.EndOfGameActivity;
-import com.example.mirnabouchra.cloudolympics.games.MathGameActivity;
-import com.example.mirnabouchra.cloudolympics.games.SequenceGameActivity;
-import com.example.mirnabouchra.cloudolympics.games.ShakingGameActivity;
-import com.example.mirnabouchra.cloudolympics.games.SwipeGameActivity;
-import com.example.mirnabouchra.cloudolympics.games.TappingGameActivity;
-import com.example.mirnabouchra.cloudolympics.games.TurnGameActivity;
-import com.example.mirnabouchra.cloudolympics.games.WaitingActivity;
+import com.google.cloudcup.games.EndOfGameActivity;
+import com.google.cloudcup.games.MathGameActivity;
+import com.google.cloudcup.games.SequenceGameActivity;
+import com.google.cloudcup.games.ShakingGameActivity;
+import com.google.cloudcup.games.SwipeGameActivity;
+import com.google.cloudcup.games.TappingGameActivity;
+import com.google.cloudcup.games.TurnGameActivity;
+import com.google.cloudcup.games.WaitingActivity;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
