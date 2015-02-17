@@ -23,7 +23,7 @@ Copyright 2014 Google Inc. All rights reserved.
     <string name="enter_code">Enter code</string>
     <string name="join">Join</string>
     <string name="enter_username">Enter username</string>
-    <string name="visit_message">Visit go/cloud-cup on a big screen.</string>
+    <string name="visit_message">Visit https://cloud-cup.firebaseapp.com on a big screen to get started.</string>
 
     <string name="start">Start</string>
 
