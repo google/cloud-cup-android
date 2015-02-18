@@ -14,16 +14,22 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.google.cloudcup;
+package fr.steren.cloudcup.games;
 
-import android.app.Application;
-import android.test.ApplicationTestCase;
+import android.os.Bundle;
 
-/**
- * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
- */
-public class ApplicationTest extends ApplicationTestCase<Application> {
-    public ApplicationTest() {
-        super(Application.class);
+import fr.steren.cloudcup.GameActivity;
+import fr.steren.cloudcup.R;
+
+
+public class BoilerplateGameActivity extends GameActivity {
+    private static final String LOG_TAG = BoilerplateGameActivity.class.getSimpleName();
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        state = GameState.GAME;
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.boilerplate_game_activity);
     }
 }

@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.google.cloudcup.games;
+package fr.steren.cloudcup.games;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -22,10 +22,10 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageButton;
 
-import com.google.cloudcup.Consts;
-import com.google.cloudcup.GameActivity;
-import com.google.cloudcup.ImageAdapter;
-import com.google.cloudcup.R;
+import fr.steren.cloudcup.Consts;
+import fr.steren.cloudcup.GameActivity;
+import fr.steren.cloudcup.ImageAdapter;
+import fr.steren.cloudcup.R;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;

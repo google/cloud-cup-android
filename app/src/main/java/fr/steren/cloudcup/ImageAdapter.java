@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.google.cloudcup;
+package fr.steren.cloudcup;
 
 import android.content.Context;
 import android.graphics.Bitmap;

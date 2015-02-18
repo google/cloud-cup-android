@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.google.cloudcup.games;
+package fr.steren.cloudcup.games;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -27,10 +27,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.cloudcup.BitmapUtils;
-import com.google.cloudcup.Consts;
-import com.google.cloudcup.GameActivity;
-import com.google.cloudcup.R;
+import fr.steren.cloudcup.BitmapUtils;
+import fr.steren.cloudcup.Consts;
+import fr.steren.cloudcup.GameActivity;
+import fr.steren.cloudcup.R;
 import info.evelio.drawable.RoundedAvatarDrawable;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;

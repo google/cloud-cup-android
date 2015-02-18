@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.google.cloudcup;
+package fr.steren.cloudcup;
 
 /**
  * Created by steren on 11/18/14.

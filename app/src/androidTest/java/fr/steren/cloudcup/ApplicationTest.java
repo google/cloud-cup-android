@@ -14,23 +14,16 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.google.cloudcup.games;
+package fr.steren.cloudcup;
 
-import android.os.Bundle;
+import android.app.Application;
+import android.test.ApplicationTestCase;
 
-import com.google.cloudcup.GameActivity;
-import com.google.cloudcup.R;
-
-public class WaitingActivity extends GameActivity {
-    private static final String LOG_TAG = WaitingActivity.class.getSimpleName();
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        state = GameState.WAITING;
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.waiting_activity);
-
+/**
+ * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
+ */
+public class ApplicationTest extends ApplicationTestCase<Application> {
+    public ApplicationTest() {
+        super(Application.class);
     }
 }

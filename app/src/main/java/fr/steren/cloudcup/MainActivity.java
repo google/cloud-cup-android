@@ -14,7 +14,7 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.google.cloudcup;
+package fr.steren.cloudcup;
 
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
@@ -33,7 +33,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
-import com.google.cloudcup.games.BlankGameActivity;
+import fr.steren.cloudcup.games.BlankGameActivity;
 import com.firebase.client.Firebase;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;

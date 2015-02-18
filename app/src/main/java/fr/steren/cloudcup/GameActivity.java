@@ -14,21 +14,21 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.google.cloudcup;
+package fr.steren.cloudcup;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.google.cloudcup.games.EndOfGameActivity;
-import com.google.cloudcup.games.MathGameActivity;
-import com.google.cloudcup.games.SequenceGameActivity;
-import com.google.cloudcup.games.ShakingGameActivity;
-import com.google.cloudcup.games.SwipeGameActivity;
-import com.google.cloudcup.games.TappingGameActivity;
-import com.google.cloudcup.games.TurnGameActivity;
-import com.google.cloudcup.games.WaitingActivity;
+import fr.steren.cloudcup.games.EndOfGameActivity;
+import fr.steren.cloudcup.games.MathGameActivity;
+import fr.steren.cloudcup.games.SequenceGameActivity;
+import fr.steren.cloudcup.games.ShakingGameActivity;
+import fr.steren.cloudcup.games.SwipeGameActivity;
+import fr.steren.cloudcup.games.TappingGameActivity;
+import fr.steren.cloudcup.games.TurnGameActivity;
+import fr.steren.cloudcup.games.WaitingActivity;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;

@@ -14,22 +14,23 @@ Copyright 2014 Google Inc. All rights reserved.
         limitations under the License.
 */
 
-package com.google.cloudcup.games;
+package fr.steren.cloudcup.games;
 
 import android.os.Bundle;
 
-import com.google.cloudcup.GameActivity;
-import com.google.cloudcup.R;
+import fr.steren.cloudcup.GameActivity;
+import fr.steren.cloudcup.R;
 
+public class WaitingActivity extends GameActivity {
+    private static final String LOG_TAG = WaitingActivity.class.getSimpleName();
 
-public class BoilerplateGameActivity extends GameActivity {
-    private static final String LOG_TAG = BoilerplateGameActivity.class.getSimpleName();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        state = GameState.GAME;
+        state = GameState.WAITING;
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.boilerplate_game_activity);
+        setContentView(R.layout.waiting_activity);
+
     }
 }
