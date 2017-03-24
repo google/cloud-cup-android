@@ -1,3 +1,5 @@
+Warning: This project is unmaintained and uses a deprecated SDK. You should use the new [Firebase Android SDK](https://firebase.google.com/docs/android/setup) for your project.
+
 # Cloud Cup Android client
 
 This repository contains the source code of the player screen of the Cloud Cup game. 
